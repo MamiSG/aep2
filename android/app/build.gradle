@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'dev.flutter.flutter-gradle-plugin'  // O Flutter Gradle Plugin deve ser aplicado após os plugins Android e Kotlin
+}
+
+android {
+    namespace 'com.aep.detectthreats'  // Defina um namespace único e apropriado
+    compileSdkVersion 34  
+    ndkVersion flutter.ndkVersion
+
+    defaultConfig {
+        applicationId "com.aep.detectthreats"  // Deve corresponder ao namespace
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode flutter.versionCode
+        versionName flutter.versionName
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
